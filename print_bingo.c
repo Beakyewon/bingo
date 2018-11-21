@@ -17,3 +17,4 @@ void print_bingo(int bingo[N][N]){ // 빙고 테이블에 현재상황 출력.
 			
 	}printf("\n");
 }
+

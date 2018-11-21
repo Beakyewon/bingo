@@ -19,12 +19,11 @@ int main()
 {
 	int user_bingo[N][N];
 	int com_bingo[N][N];
-	int count=0;
-	int num;
-	int user_count, com_count; //빙고수
-	int bingo_count=0;  
+	int num;                   // USER가 입력한수   
+	int user_count, com_count; //각각의 빙고수
+	int bingo_count=0;  // 빙고 턴 돌아간 횟수 
 	
-	initiate_bingo(user_bingo);
+	initiate_bingo(user_bingo); //빙고판 초기화 
 	initiate_bingo(com_bingo);
 	
 	while(1) {

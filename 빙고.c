@@ -87,10 +87,44 @@ int print_bingo(int bingo[N][N]){
 
 int get_number_byMe(){
 	int num;
-	int x, retry;
-	do {
-		retry = 0;
-		
+	int x, retry;}
+
+int count_bingo(int bingo[5][5]){
+	int i,j,sum,count;
+	
+	for(j=0;j<N;j++){
+		sum =0;
+		for(i=0;i<N;i++){
+			sum+=bingo[j][i];
+		}
+		if(sum==0){
+			count++;
+		}
 	}
+	for(i=0;i<N;i++){
+		sum=0;
+		for(j=0;j<N;j++){
+			sum+=bingo[j][i];
+		}
+		if(sum==0){
+			count ++;
+		}
+	}
+	sum=0;
+	for(i=0;i<N;i++){
+		sum+=bingo[i][i];
+	}
+	if(sum==0){
+		count ++;
+	}
+	sum=0;
+	for(i=0;i<N;i++){
+		sum+=bingo[i][N-i-1];
+	}
+	if(sum==0){
+		count++;
+	}
+	return count;
+}
 
 

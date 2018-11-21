@@ -23,8 +23,8 @@ int main()
 	int user_count, com_count; //각각의 빙고수
 	int bingo_count=0;  // 빙고 턴 돌아간 횟수 
 	
-	initiate_bingo(usrt_bingo); //빙고판 초기화 
-	
+	initiate_bingo(user_bingo); //빙고판 초기화 
+	initiate_bingo(com_bingo);
 	
 	while(1) {
 		printf("\t\t[USER]\n\n");

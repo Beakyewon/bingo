@@ -7,20 +7,21 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-int initiate_bingo(int bingo[N]); // 빙고 테이블을 초기에 만들어줌 
+int initiate_bingo(int bingo[N][N]); // 빙고 테이블을 초기에 만들어줌 
 int print_bingo(int bingo[N][N]);    // 빙고 테이블에 현재상황 출력
 int get_number_byMe();     //내가 빙고번호 입력 선택 
 int get_number_byCom();    //컴퓨터가 임의로 빙고 번호 선택 
 int process_bingo(int bingo[N][N], int num);       // 선택된 숫자를 입력받아서 빙고 테이블 칸을 채움 
 int count_bingo(int bingo[N][N]);       // 빙고 테이블이 채운 가로/세로/대각선 줄 수를 계산해서 반환 
 
+	
 int bingo[N][N];
 int user_bingo[N][N];
 int com_bingo[N][N];
 int count=0;
 
 int main()
-{
+{	srand((unsigned int)time(NULL));
 	int num;
 	int user_count, com_count;
 	
@@ -46,23 +47,6 @@ int main()
 	}
 	system("pause");
 	system("cls");
-	return 0;
-}
-
-int initiate_bingo(int bingo[N]){
-	
-	srand((unsigned int)time(NULL));
-	int i,a,b,c;
-	for(i=0; i<N*N; i++){
-		bingo[i] = i+1;
-		
-		a=rand()%(N*N)+1;
-		b=rand()%(N*N)+1;
-		c=bingo[a];
-		bingo[a]=bingo[b];
-		bingo[b]=c;
-	}
-	
 }
 
 int process_bingo(int bingo[N][N], int num){
@@ -76,13 +60,45 @@ int process_bingo(int bingo[N][N], int num){
 		}
 	}
 }
+
+int initiate_bingo(int bingo[N][N])
+{
+	int i, j;
+	int A = 1;
+	int x, y;
+	int temp;
+	
+	srand((unsigned int)time(NULL));
+	
+	x = rand() % N +1;
+	y = rand() % N +1;
+	
+	for(i=0; i<N; i++)
+	{
+		for(j=0; j<N; j++)
+		{
+			bingo[i][j] = A ;
+			A++;
+		}
+	}
+	
+	for(i=0; i<N; i++)
+	{
+		for(j=0; j<N; j++)
+		{
+			temp = bingo[i][j];
+			bingo[i][j] = bingo[y][x];
+			bingo[y][x] = temp;
+		}
+	}
+}
  // 빙고 테이블에 현재상황 출력. 
 int print_bingo(int bingo[N][N]){
 	int x,y;
 	for (y=0; y<N; y++){
 		for(x=0; x<N; x++){
 		
-		printf("%4d\n", bingo[N][N]);
+		printf("%4d", bingo[x][y]);
 		}
 	}
 	printf("\n\n");
@@ -150,3 +166,4 @@ int get_number_byCom(){
 		num = rand()%(N*N)+1;
 	}while (error==1);
 }
+

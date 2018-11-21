@@ -21,7 +21,7 @@ int main()
 	int com_bingo[N][N];
 	int count=0;
 	int num;
-	int user_count, com_count;
+	int user_count, com_count; //빙고수  
 	
 	initiate_bingo(user_bingo);
 	initiate_bingo(com_bingo);
@@ -52,8 +52,8 @@ int main()
 		break;
 	}
 
+ }
 }
-
 int initiate_bingo(int bingo[N][N])
 {
 	srand((unsigned int)time(NULL));
@@ -84,8 +84,8 @@ int initiate_bingo(int bingo[N][N])
 	}
 }
 
- // 빙고 테이블에 현재상황 출력. 
-void print_bingo(int bingo[N][N]){
+ 
+void print_bingo(int bingo[N][N]){ // 빙고 테이블에 현재상황 출력.
 
 	int x, y;
 	for (y=0; y<N; y++){
@@ -110,10 +110,11 @@ int process_bingo(int bingo[N][N], int num){ //입력받은 num와 같은 수를 0으로 만
 	}
 }
 
-int count_bingo(int bingo[N][N]){
+int count_bingo(int bingo[N][N]){ // 빙고수 세기 함수. 
+
 	int i,j,sum,count;
 	
-	for(j=0; j<N; j++){
+	for(j=0; j<N; j++){ //가로줄 빙고 확인.  
 		sum=0;
 		for(i=0; i<N; i++){
 			sum+=bingo[j][i];
@@ -122,7 +123,7 @@ int count_bingo(int bingo[N][N]){
 			count++;
 		}
 	}
-	for(i=0;i<N;i++){
+	for(i=0;i<N;i++){ //세로줄 빙고 확인. 
 		sum=0;
 		for(j=0;j<N;j++){
 			sum+=bingo[j][i];
@@ -132,7 +133,7 @@ int count_bingo(int bingo[N][N]){
 		}
 	}
 	sum=0;
-	for(i=0;i<N;i++){
+	for(i=0;i<N;i++){  //대각선 빙고 확인.  
 		sum+=bingo[i][i];
 	}
 	if(sum==0){
@@ -165,15 +166,16 @@ int get_number_byMe(){
 	printf("USER가 %d를 선택했습니다.\n", num);
 	return num;
 }
-int get_number_byCom(){
 
+int get_number_byCom(){
+ 
 	int num;
 	int error;
 	
 	do{
 		error=0;
 		num = rand()%(N*N)+1;
-	}while (error==1);
+	} while (error==1);
 	printf("COMPUTER가 %d를 선택했습니다.\n", num);
 	return num;
 }

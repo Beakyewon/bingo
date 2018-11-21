@@ -11,7 +11,7 @@ int initiate_bingo(int bingo[N][N]); // 빙고 테이블을 초기에 만들어줌
 void print_bingo(int bingo[N][N]);    // 빙고 테이블에 현재상황 출력
 int get_number_byMe();     //내가 빙고번호 입력 선택 
 int get_number_byCom();    //컴퓨터가 임의로 빙고 번호 선택 
-int process_bingo(int bingo[N][N], int num);       // 선택된 숫자를 입력받아서 빙고 테이블 칸을 채움 
+void process_bingo(int bingo[N][N], int num);       // 선택된 숫자를 입력받아서 빙고 테이블 칸을 채움 
 int count_bingo(int bingo[N][N]);       // 빙고 테이블이 채운 가로/세로/대각선 줄 수를 계산해서 반환 
 
 
@@ -98,12 +98,12 @@ void print_bingo(int bingo[N][N]){ // 빙고 테이블에 현재상황 출력.
 	}printf("\n");
 }
 
-int process_bingo(int bingo[N][N], int num){ //입력받은 num와 같은 수를 0으로 만든다. 
+void process_bingo(int bingo[N][N], int num){ //입력받은 num와 같은 수를 0으로 만든다. 
 	int x,y;
 	
 	for(y=0; y<N; y++){
 		for(x=0; x<N; x++){
-			if(bingo[N][N]==num){
+			if(bingo[y][x]==num){ //입력받은 수와 빙고의 수가 같은지 하나하나 확인하는 과정. 
 				bingo[y][x]=0;
 			}
 		}
@@ -159,11 +159,11 @@ int get_number_byMe(){
 		printf("지울 숫자를 입력하세요: ");
 		scanf("%d", &num);
 		if(num<1||num>N*N){
-			printf("다시 입력하세요.");
+			printf("다시 입력하세요.\n");
 			error=1; 
 		} 
 	}while (error==1);
-	printf("USER가 %d를 선택했습니다.\n", num);
+	printf("\n USER가 %d를 선택했습니다.\n", num);
 	return num;
 }
 
@@ -176,7 +176,7 @@ int get_number_byCom(){
 		error=0;
 		num = rand()%(N*N)+1;
 	} while (error==1);
-	printf("COMPUTER가 %d를 선택했습니다.\n", num);
+	printf("\n COMPUTER가 %d를 선택했습니다.\n", num);
 	return num;
 }
 

@@ -12,7 +12,7 @@ int count_bingo(int bingo[N][N]){ // 빙고수 세기 함수.
 	
 	for(j=0; j<N; j++){ //가로줄 빙고 확인.  
 		
-		sum=0;
+		sum=0;           
 		
 		for(i=0; i<N; i++){
 			sum+=bingo[j][i];

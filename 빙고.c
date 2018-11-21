@@ -7,7 +7,7 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-void initiate_bingo1(int bingo[N][N]); // 빙고 테이블을 초기에 만들어줌 
+void initiate_bingo(int bingo[N][N]); // 빙고 테이블을 초기에 만들어줌 
 void print_bingo(int bingo[N][N]);    // 빙고 테이블에 현재상황 출력
 int get_number_byMe();     //내가 빙고번호 입력 선택 
 int get_number_byCom();    //컴퓨터가 임의로 빙고 번호 선택 
@@ -23,8 +23,8 @@ int main()
 	int user_count, com_count; //각각의 빙고수
 	int bingo_count=0;  // 빙고 턴 돌아간 횟수 
 	
-	initiate_bingo(user_bingo); //빙고판 초기화 
-	initiate_bingo(com_bingo);
+	initiate_bingo(usrt_bingo); //빙고판 초기화 
+	
 	
 	while(1) {
 		printf("\t\t[USER]\n\n");

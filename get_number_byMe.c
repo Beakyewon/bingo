@@ -18,7 +18,9 @@ int get_number_byMe(){
 			printf("다시 입력하세요.\n");
 			error=1; 
 		} 
+		
 	}while (error==1);
+	
 	printf("\n USER가 %d를 선택했습니다.\n", num);
 	return num;
 }
